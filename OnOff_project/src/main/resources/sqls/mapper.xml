@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="onoff">
+
+	<!-- *********************************List를 출력하기 위한 resultMap 작업****************************************** -->
+	<resultMap type="com.t.s.model.dto.FreeBoardAnsDto" id="FreeBoardAnsMap">
+		<result property="boardansno" column="BOARDANSNO" />
+		<result property="boardno" column="BOARDNO" />
+		<result property="userid" column="USERID" />
+		<result property="groupno" column="GROUPNO" />
+		<result property="boardanscontent" column="BOARDANSCONTENT" />
+		<result property="boardansregdate" column="BOARDANSREGDATE" />
+	</resultMap>
+	
+	<resultMap type="com.t.s.model.dto.FreeBoardDto" id="FreeBoardMap">
+		<result property="boardno" column="BOARDNO" />
+		<result property="userid" column="USERID" />
+		<result property="groupno" column="GROUPNO" />
+		<result property="boardtitle" column="BOARDTITLE" />
+		<result property="boardcontent" column="BOARDCONTENT" />
+		<result property="boardregdate" column="BOARDREGDATE" />
+	</resultMap>
+	
+	<resultMap type="com.t.s.model.dto.GroupDto" id="GroupMap">
+		<result property="groupno" column="GROUPNO" />
+		<result property="grouptitle" column="GROUPTITLE" />
+		<result property="groupcontent" column="GROUPCONTENT" />
+		<result property="groupregdate" column="GROUPREGDATE" />
+		<result property="groupimg" column="GROUPIMG" />
+	</resultMap>
+	
+	<resultMap type="com.t.s.model.dto.GroupUserDto" id="GroupUserMap">
+		<result property="userid" column="USERID" />
+		<result property="groupno" column="GROUPNO" />
+		<result property="groupusergrade" column="GROUPUSERGRADE" />
+		<result property="groupuserregdate" column="GROUPUSERREGDATE" />
+	</resultMap>
+	
+	<resultMap type="com.t.s.model.dto.ImgBoardAnsDto" id="ImgBoardAnsMap">
+		<result property="imgansno" column="IMGANSNO" />
+		<result property="imgboardno" column="IMGBOARDNO" />
+		<result property="moimno" column="MOIMNO" />
+		<result property="userid" column="USERID" />
+		<result property="groupno" column="GROUPNO" />
+		<result property="imganscontent" column="IMGANSCONTENT" />
+		<result property="imgansregdate" column="IMGANSREGDATE" />
+	</resultMap>
+	
+	<resultMap type="com.t.s.model.dto.ImgBoardDto" id="ImgBoardMap">
+		<result property="imgboardno" column="IMGBOARDNO" />
+		<result property="moimno" column="MOIMNO" />
+		<result property="userid" column="USERID" />
+		<result property="groupno" column="GROUPNO" />
+		<result property="imgboardtitle" column="IMGBOARDTITLE" />
+		<result property="imgboardcontent" column="IMGBOARDCONTENT" />
+		<result property="imgboardregdate" column="IMGBOARDREGDATE" />
+		<result property="imgboardimg" column="IMGBOARDIMG" />
+	</resultMap>
+	
+	<resultMap type="com.t.s.model.dto.MoimAnsDto" id="MoimAnsMap">
+		<result property="moimansno" column="MOIMANSNO" />
+		<result property="moimno" column="MOIMNO" />
+		<result property="userid" column="USERID" />
+		<result property="groupno" column="GROUPNO" />
+		<result property="moimanscontent" column="MOIMANSCONTENT" />
+		<result property="moimansregdate" column="MOIMANSREGDATE" />
+	</resultMap>
+	
+	<resultMap type="com.t.s.model.dto.MoimDto" id="MoimMap">
+		<result property="moimno" column="MOIMNO" />
+		<result property="userid" column="USERID" />
+		<result property="groupno" column="GROUPNO" />
+		<result property="moimtitle" column="MOIMTITLE" />
+		<result property="moimcontent" column="MOIMCONTENT" />
+		<result property="moimrecruit" column="MOIMRECRUIT" />
+		<result property="moimaddr" column="MOIMADDR" />
+		<result property="moimregdate" column="MOIMREGDATE" />
+		<result property="moimenddate" column="MOIMENDDATE" />
+		<result property="moimdate" column="MOIMDATE" />
+		<result property="lat" column="LAT" />
+		<result property="lng" column="LNG" />
+	</resultMap>
+	
+	<resultMap type="com.t.s.model.dto.MoimUserDto" id="MoimUserMap">
+		<result property="moimno" column="MOIMNO" />
+		<result property="userid" column="USERID" />
+		<result property="groupno" column="GROUPNO" />
+		<result property="moimq1" column="MOIMQ1" />
+		<result property="moimq2" column="MOIMQ2" />
+		<result property="moimq3" column="MOIMQ3" />
+		<result property="moimq4" column="MOIMQ4" />
+		<result property="moimq5" column="MOIMQ5" />
+		<result property="moimq6" column="MOIMQ6" />
+	</resultMap>
+	
+	<resultMap type="com.t.s.model.dto.UserDto" id="UserMap">
+		<result property="userid" column="USERID" />
+		<result property="userpw" column="USERPW" />
+		<result property="usergrade" column="USERGRADE" />
+		<result property="username" column="USERNAME" />
+		<result property="userbirth" column="USERBIRTH" />
+		<result property="useremail" column="USEREMAIL" />
+		<result property="useraddr" column="USERADDR" />
+		<result property="usergender" column="USERGENDER" />
+		<result property="userphone" column="USERPHONE" />
+		<result property="userregdate" column="USERREGDATE" />
+	</resultMap>
+	
+	<resultMap type="com.t.s.model.dto.SessionIds" id="SessionIds">
+      <result property="sessionid" column="SESSIONID"/>
+      <result property="userid" column="USERID"/>
+      <result property="groupno" column="GROUPNO"/>
+   </resultMap>
+	<!-- ****************************************************************************************************** -->
+	
+	
+	
+	<!-- *********************************강한승****************************************** -->
+	
+	<!-- ******************************************************************************* -->
+	
+	
+	
+	
+	<!-- *********************************남윤아****************************************** -->
+	<select id="selGroupnoGroupuser" parameterType="GroupUserDto" resultMap="GroupUserMap">
+		SELECT USERID, GROUPUSERGRADE, GROUPUSERREGDATE
+		FROM GROUPUSER
+		WHERE GROUPNO = #{groupno} AND USERID = #{userid}
+	</select>
+	
+	<insert id="insertSessionIds" parameterType="SessionIds">
+      INSERT INTO SESSIONIDS
+      VALUES(#{sessionid}, #{userid},#{groupno})
+   </insert>
+   
+   <delete id="deleteSessionIds" parameterType="String">
+      DELETE 
+      FROM SESSIONIDS
+      WHERE SESSIONID = #{value}
+   </delete>
+   
+   <select id="selectSession" parameterType="String" resultType="SessionIds">
+      SELECT * 
+      FROM SESSIONIDS
+      WHERE SESSIONID = #{sessionid}   
+   </select>
+	
+	
+	<!-- ******************************************************************************* -->
+	
+	
+	
+	
+	<!-- *********************************문지희****************************************** -->
+	<insert id="survey" parameterType="MoimUserDto">
+		INSERT INTO MOIMUSER
+		VALUES(#{moimno}, #{userid}, #{groupno}, #{moimq1}, #{moimq2}, #{moimq3}, #{moimq4}, #{moimq5}, #{moimq6})
+	</insert>
+	<!-- D3 -->
+	<select id="avgQ1" parameterType="MoimuserDto" resultType="double">
+		SELECT AVG(MOIMQ1)
+		FROM MOIMUSER
+		WHERE GROUPNO = #{groupno}
+	</select>
+	<select id="avgQ2" parameterType="MoimuserDto" resultType="double">
+		SELECT AVG(MOIMQ2)
+		FROM MOIMUSER
+		WHERE GROUPNO = #{groupno}
+	</select>
+	<select id="avgQ3" parameterType="MoimuserDto" resultType="double">
+		SELECT AVG(MOIMQ3)
+		FROM MOIMUSER
+		WHERE GROUPNO = #{groupno}	
+	</select>
+	<select id="avgQ4" parameterType="MoimuserDto" resultType="double">
+		SELECT AVG(MOIMQ4)
+		FROM MOIMUSER
+		WHERE GROUPNO = #{groupno}	
+	</select>
+	<select id="avgQ5" parameterType="MoimuserDto" resultType="double">
+		SELECT AVG(MOIMQ5)
+		FROM MOIMUSER
+		WHERE GROUPNO = #{groupno}
+	</select>
+	<select id="groupinfoManager" parameterType="String" resultMap="GroupMap">
+		SELECT GROUPNO,GROUPTITLE,GROUPCONTENT,GROUPREGDATE,GROUPIMG
+		FROM GROUPINFO
+		WHERE GROUPNO IN
+			(SELECT GROUPNO FROM GROUPUSER WHERE USERID=#{userid } AND GROUPUSERGRADE='MASTER')
+	</select>
+	<select id="groupinfoUser" parameterType="String" resultMap="GroupMap">
+		SELECT GROUPNO,GROUPTITLE,GROUPCONTENT,GROUPREGDATE,GROUPIMG
+		FROM GROUPINFO
+		WHERE GROUPNO IN
+			(SELECT GROUPNO FROM GROUPUSER WHERE USERID=#{userid })
+	</select>
+	<update id="updateGroupinfo" parameterType="groupDto">
+        UPDATE GROUPINFO SET GROUPTITLE=#{grouptitle},GROUPCONTENT=#{groupcontent},GROUPIMG=#{groupimg}  WHERE GROUPNO = #{groupno}
+    </update>
+    <delete id="delGroupinfo" parameterType="int">
+        DELETE FROM GROUPINFO WHERE GROUPNO=#{groupno}
+    </delete>
+	<!-- ******************************************************************************* -->
+	
+	
+	
+	
+	<!-- *********************************박정성****************************************** -->
+	
+	<select id="selectAllMoim" parameterType="int" resultMap="MoimMap">
+	
+	SELECT MOIMNO,MOIMTITLE,USERID,MOIMREGDATE,MOIMADDR,MOIMDATE FROM MOIM WHERE GROUPNO=#{groupno}
+		
+	
+	</select>
+	
+	
+	<select id="selectOneMoim" parameterType="int" resultType="MoimDto">
+	
+	SELECT USERID,MOIMTITLE,MOIMCONTENT,MOIMRECRUIT,MOIMADDR,MOIMREGDATE,MOIMENDDATE,MOIMDATE,LAT,LNG,MOIMNO FROM MOIM WHERE MOIMNO=#{moimno}
+	
+	</select>
+	
+	
+	
+	<insert id="insertMoim" parameterType="MoimDto">
+		INSERT INTO MOIM VALUES(MOIMSEQ.NEXTVAL,#{userid},#{groupno},#{moimtitle},#{moimcontent},#{moimrecruit},#{moimaddr},#{lat},#{lng},SYSDATE,#{moimenddate},#{moimdate})
+	</insert>
+	
+
+	
+	<select id="selectPaging" parameterType="com.t.s.domain.Criteria" resultMap="MoimMap">
+	
+	select MOIMNO,MOIMTITLE,USERID,MOIMREGDATE
+    from (
+        select MOIMNO,MOIMTITLE,USERID,MOIMREGDATE,
+            row_number() over(order by MOIMNO desc) as rNum
+        from MOIM where GROUPNO=#{groupno}
+        ) mb
+    where rNum between #{rowStart} and #{rowEnd}
+        order by MOIMNO desc
+	
+	</select>
+	
+	<select id="listCount" parameterType="int" resultType="int">
+	
+	select count(MOIMNO)
+		from MOIM
+			where MOIMNO>0 and GROUPNO=#{groupno}
+	
+	</select>
+	
+	<delete id="moimdelete" parameterType="int">
+	
+		DELETE FROM MOIM WHERE MOIMNO=#{moimno}
+	
+	</delete>
+	
+	
+	<update id="updateMoim" parameterType="MoimDto">
+	
+		UPDATE MOIM SET MOIMTITLE=#{moimtitle},MOIMDATE=#{moimdate},MOIMRECRUIT=#{moimrecruit},MOIMADDR=#{moimaddr},MOIMENDDATE=#{moimenddate},MOIMCONTENT=#{moimcontent},LAT=#{lat},LNG=#{lng} WHERE MOIMNO=#{moimno}
+	
+	</update>
+	
+	<select id="selectmyMoimList" parameterType="String" resultMap="MoimMap">
+	
+	SELECT MOIMNO,GROUPNO,MOIMTITLE,MOIMADDR,MOIMDATE FROM MOIM WHERE MOIMNO IN (SELECT MOIMNO FROM MOIMUSER WHERE USERID=#{userid})
+	
+	</select>
+	
+	
+	<insert id="moimjoin" parameterType="MoimUserDto">
+	
+	INSERT INTO MOIMUSER VALUES(#{moimno},#{userid},#{groupno},NULL,NULL,NULL,NULL,NULL,NULL)
+	
+	</insert>
+	
+	<delete id="moimout" parameterType="MoimUserDto">
+	
+	DELETE FROM MOIMUSER WHERE MOIMNO=#{moimno} AND USERID=#{userid} AND GROUPNO=#{groupno}
+	
+	</delete>
+	
+	<select id="moimres" parameterType="MoimUserDto" resultType="MoimUserDto">
+	
+	SELECT MOIMNO FROM MOIMUSER WHERE MOIMNO=#{moimno} AND USERID=#{userid} AND GROUPNO=#{groupno}
+	
+	</select>
+	
+	<select id="findMoimNo" parameterType="MoimUserDto" resultType="int">
+		SELECT MOIMNO
+		FROM (SELECT MOIMNO FROM MOIM WHERE USERID=#{userid} AND GROUPNO=#{groupno} ORDER BY MOIMREGDATE DESC)
+		WHERE ROWNUM = 1
+	</select>
+	
+	
+	<!-- ******************************************************************************* -->
+	
+	
+	
+	
+	<!-- *********************************조승빈****************************************** -->
+	
+		
+	<select id="login" parameterType="map" resultType="UserDto">
+		SELECT *
+		FROM USERINFO
+		WHERE USERID = #{userid} AND USERPW = #{userpw}
+	</select>
+	
+	<select id="idchk" parameterType="String" resultMap="UserMap">
+		SELECT *
+		FROM USERINFO
+		WHERE USERID = #{userid}
+	</select>
+	
+	<insert id="regist" parameterType="UserDto">
+		INSERT INTO USERINFO
+		VALUES(#{userid},#{userpw},'NORMAL',#{username},#{userbirth},#{useremail},#{useraddr},#{usergender},#{userphone},SYSDATE)
+	</insert>
+	
+	<select id="searchpassword" parameterType="String" resultType="String">
+		SELECT USERPW
+		FROM USERINFO
+		WHERE USERID = #{userid}
+	</select>
+	
+	<select id="myinfo" parameterType="String" resultMap="UserMap">
+		SELECT *
+		FROM USERINFO
+		WHERE USERID = #{userid}
+	</select>
+	
+	<delete id="dropuser" parameterType="String">
+		DELETE 
+		FROM USERINFO
+		WHERE USERID = #{userid}
+	</delete>
+	
+	<update id="updateuser" parameterType="UserDto">
+		UPDATE USERINFO
+		SET USERPW=#{userpw}, USERNAME=#{username}, USERBIRTH=#{userbirth}, USEREMAIL=#{useremail}, USERADDR=#{useraddr}, USERGENDER=#{usergender}, USERPHONE=#{userphone}
+		WHERE USERID=#{userid} 
+	</update>
+	
+	<select id="groupSearch_search" resultMap="GroupMap" parameterType="com.t.s.domain.SearchCriteria">
+		SELECT GROUPNO, GROUPTITLE, GROUPCONTENT, GROUPREGDATE, GROUPIMG
+        FROM 
+        (SELECT GROUPNO, GROUPTITLE, GROUPCONTENT, GROUPREGDATE, GROUPIMG,
+		ROW_NUMBER() OVER(ORDER BY GROUPNO DESC) AS RNUM
+		FROM GROUPINFO
+        <include refid="search"></include>
+        ) g
+        WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+        ORDER BY GROUPNO DESC
+	</select>
+	
+	<sql id="search">
+	 <!-- <if test="searchType == 'n'.toString()">WHERE</if> -->
+	  <if test="searchType == 't'.toString()">WHERE GROUPTITLE LIKE '%' || #{keyword} || '%'</if>
+	  <if test="searchType == 'c'.toString()">WHERE GROUPCONTENT LIKE '%' || #{keyword} || '%'</if>
+	  <if test="searchType == 'tc'.toString()">WHERE (GROUPTITLE LIKE '%' || #{keyword} || '%') OR (GROUPCONTENT LIKE '%' || #{keyword} || '%')</if>
+
+	</sql>
+	
+	<sql id="searchcount">
+	 <!-- <if test="searchType == 'n'.toString()">WHERE</if> -->
+	  <if test="searchType == 't'.toString()">GROUPTITLE LIKE '%' || #{keyword} || '%' AND</if>
+	  <if test="searchType == 'c'.toString()">GROUPCONTENT LIKE '%' || #{keyword} || '%' AND</if>
+	  <if test="searchType == 'tc'.toString()">(GROUPTITLE LIKE '%' || #{keyword} || '%') OR (GROUPCONTENT LIKE '%' || #{keyword} || '%') AND</if>
+
+	</sql>
+	
+	<select id="groupSearch_searchCount" resultType="int" parameterType="com.t.s.domain.SearchCriteria">
+		SELECT COUNT(GROUPNO)
+		FROM GROUPINFO WHERE
+		<include refid="searchcount"></include>
+		<![CDATA[
+		   GROUPNO > 0
+		]]>
+	</select>
+	
+	<select id="selectAllGroupUser" resultMap="GroupUserMap" parameterType="int">
+		SELECT * FROM GROUPUSER WHERE GROUPNO = #{groupno}
+	</select>
+	
+	
+	<!-- ******************************************************************************* -->
+	
+	
+	
+	
+	<!-- *********************************최세왕****************************************** -->
+	<!-- 그룹 정보 불러오기  -->
+	<select id="groupInfo" resultType="GroupDto" parameterType="int">
+		SELECT GROUPNO, GROUPTITLE, GROUPCONTENT, GROUPREGDATE, GROUPIMG FROM GROUPINFO WHERE GROUPNO=#{groupmo}
+	</select>
+	
+	<!-- 그룹 인서트 -->
+	<insert id="groupInsert" parameterType="GroupDto" >
+		INSERT INTO GROUPINFO VALUES(GROUPSEQ.NEXTVAL, #{grouptitle}, #{groupcontent}, SYSDATE, #{groupimg})
+	</insert>
+	<select id="findGroupNo" parameterType="String" resultType="int">
+		SELECT GROUPNO FROM GROUPINFO WHERE GROUPIMG=#{fineImg}
+	</select>
+	
+	<!-- 그룹 유저 -->
+	<insert id="groupInUser" parameterType="GroupUserDto">
+		INSERT INTO GROUPUSER VALUES(#{userid}, #{groupno}, #{groupusergrade}, SYSDATE)
+	</insert>
+	
+	<!-- 그룹 유저 -->
+	<insert id="groupOutUser" parameterType="GroupUserDto">
+		DELETE FROM GROUPUSER WHERE USERID=#{userid} AND GROUPNO=#{groupno}
+	</insert>
+	
+	<!-- 자유게시판 -->
+	<select id="freeboardlist" resultMap="FreeBoardMap" parameterType="hashmap">
+	<![CDATA[
+		SELECT BOARDNO, USERID, GROUPNO, BOARDTITLE, BOARDCONTENT, BOARDREGDATE, R 
+		FROM (SELECT BOARDNO, USERID, GROUPNO, BOARDTITLE, BOARDCONTENT, BOARDREGDATE, ROWNUM R
+			  FROM (SELECT BOARDNO, USERID, GROUPNO, BOARDTITLE, BOARDCONTENT, BOARDREGDATE FROM FREEBOARD WHERE GROUPNO=#{groupno} ORDER BY BOARDNO DESC )
+			  WHERE ROWNUM <= #{pagenum}*5) 
+		WHERE R > ((#{pagenum}-1)*5)
+		]]>
+	</select>
+	
+	<select id="freeboardlistCnt" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM FREEBOARD WHERE GROUPNO=#{groupno}
+	</select>
+	
+	<select id="freeboarddetail" parameterType="int" resultType="FreeBoardDto">
+		SELECT BOARDNO, USERID, GROUPNO, BOARDTITLE, BOARDCONTENT, BOARDREGDATE FROM FREEBOARD WHERE BOARDNO=#{boardno}
+	</select>
+	
+	<insert id="freeBoardInsert" parameterType="FreeBoardDto">
+		INSERT INTO FREEBOARD VALUES(BOARDSEQ.NEXTVAL, #{userid}, #{groupno}, #{boardtitle}, #{boardcontent}, SYSDATE)
+	</insert>
+	
+	<update id="freeBoardUpdate" parameterType="FreeBoardDto">
+		UPDATE FREEBOARD SET BOARDTITLE=#{boardtitle}, BOARDCONTENT=#{boardcontent} WHERE BOARDNO=#{boardno}
+	</update>
+	
+	<delete id="freeBoardDelete" parameterType="int">
+		DELETE FROM FREEBOARD WHERE BOARDNO=#{boardno}
+	</delete>
+	
+	<delete id="freeBoardUserDelete" parameterType="String">
+		DELETE FROM FREEBOARD WHERE USERID=#{userid}
+	</delete>
+	
+	<!-- 자유게시판 댓글 -->
+	
+	<select id="freeBoardAnsList" parameterType="int" resultMap="FreeBoardAnsMap">
+		SELECT BOARDANSNO, BOARDNO, USERID, GROUPNO, BOARDANSCONTENT, BOARDANSREGDATE FROM FREEBOARDANS WHERE BOARDNO=#{boardno}
+	</select>
+	
+	<insert id="freeBoardAnsInsert" parameterType="FreeBoardAnsDto">
+		INSERT INTO FREEBOARDANS VALUES(BOARDANSSEQ.NEXTVAL, #{boardno}, #{userid}, #{groupno}, #{boardanscontent}, SYSDATE)
+	</insert>
+	
+	<delete id="freeBoardAnsDelete" parameterType="int">
+		DELETE FROM FREEBOARDANS WHERE BOARDANSNO=#{boardansno}
+	</delete>
+	
+	<delete id="freeBoardUserAnsDelete" parameterType="String">
+		DELETE FROM FREEBOARDANS WHERE USERID=#{userid}
+	</delete>
+	
+	<!-- 이미지게시판 -->
+	
+	<select id="imgboardlist" resultMap="ImgBoardMap" parameterType="hashmap">
+	<![CDATA[
+		SELECT IMGBOARDNO, MOIMNO, USERID, GROUPNO, IMGBOARDTITLE, IMGBOARDCONTENT, IMGBOARDREGDATE, IMGBOARDIMG, R 
+		FROM (SELECT IMGBOARDNO, MOIMNO, USERID, GROUPNO, IMGBOARDTITLE, IMGBOARDCONTENT, IMGBOARDREGDATE, IMGBOARDIMG, ROWNUM R
+			  FROM (SELECT IMGBOARDNO, MOIMNO, USERID, GROUPNO, IMGBOARDTITLE, IMGBOARDCONTENT, IMGBOARDREGDATE, IMGBOARDIMG FROM IMGBOARD WHERE GROUPNO=#{groupno} ORDER BY IMGBOARDNO DESC )
+			  WHERE ROWNUM <= #{pagenum}*5) 
+		WHERE R > ((#{pagenum}-1)*5)
+		]]>
+	</select>
+	
+	<select id="imgboardlistCnt" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM IMGBOARD WHERE GROUPNO=#{groupno}
+	</select>
+	
+	<select id="imgboarddetail" parameterType="int" resultType="ImgBoardDto">
+		SELECT IMGBOARDNO, MOIMNO, USERID, GROUPNO, IMGBOARDTITLE, IMGBOARDCONTENT, IMGBOARDREGDATE, IMGBOARDIMG FROM IMGBOARD WHERE IMGBOARDNO=#{imgboardno}
+	</select>
+	
+	<insert id="imgBoardInsert" parameterType="ImgBoardDto">
+		INSERT INTO IMGBOARD VALUES(IMGBOARDSEQ.NEXTVAL, #{moimno}, #{userid}, #{groupno}, #{imgboardtitle}, #{imgboardcontent}, SYSDATE, #{imgboardimg})
+	</insert>
+	
+	<update id="imgBoardUpdate" parameterType="ImgBoardDto">
+		UPDATE IMGBOARD SET IMGBOARDTITLE=#{imgboardtitle}, IMGBOARDCONTENT=#{imgboardcontent}, IMGBOARDIMG=#{imgboardimg} WHERE IMGBOARDNO=#{imgboardno}
+	</update>
+	
+	<delete id="imgBoardDelete" parameterType="int">
+		DELETE FROM IMGBOARD WHERE IMGBOARDNO=#{imgboardno}
+	</delete>
+	
+	<!-- 이미지게시판 댓글 -->
+	<select id="imgBoardAnsList" parameterType="int" resultMap="ImgBoardAnsMap">
+		SELECT IMGANSNO, IMGBOARDNO, MOIMNO, USERID, GROUPNO, IMGANSCONTENT, IMGANSREGDATE FROM IMGBOARDANS WHERE IMGBOARDNO=#{imgboardno}
+	</select>
+	
+	<insert id="imgBoardAnsInsert" parameterType="ImgBoardAnsDto">
+		INSERT INTO IMGBOARDANS VALUES(IMGBOARDANSSEQ.NEXTVAL, #{imgboardno}, #{moimno}, #{userid}, #{groupno}, #{imganscontent}, SYSDATE)
+	</insert>
+	
+	<delete id="imgBoardAnsDelete" parameterType="int">
+		DELETE FROM IMGBOARDANS WHERE IMGANSNO=#{imgansno}
+	</delete>
+	
+	<delete id="imgBoardUserAnsDelete" parameterType="String">
+		DELETE FROM IMGBOARDANS WHERE USERID=#{userid}
+	</delete>
+	
+	<!-- ******************************************************************************* -->
+
+
+</mapper>
+
